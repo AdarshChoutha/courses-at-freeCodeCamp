@@ -3,7 +3,7 @@ const app = express();
 const helmet = require('helmet');
 
 app.use(helmet.hidePoweredBy()); // hides X-Powered-By http header
-
+app.use(helmet.frameguard({ action: 'deny' })); // denys adding the site in an iframe
 
 
 
