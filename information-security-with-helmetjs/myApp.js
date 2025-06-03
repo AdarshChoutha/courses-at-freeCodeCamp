@@ -6,7 +6,7 @@ app.use(helmet.hidePoweredBy()); // hides X-Powered-By http header
 app.use(helmet.frameguard({ action: 'deny' })); // denys adding the site in an iframe
 app.use(helmet.xssFilter()); // sanitize input sent to server
 app.use(helmet.noSniff()); // instructs the browser to not bypass the provided Content-Type
-
+app.use(helmet.ieNoOpen()); // prevent IE users from executing downloads in the trusted site's context.
 
 
 
