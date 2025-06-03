@@ -11,9 +11,9 @@ app.use(helmet.ieNoOpen()); // prevent IE users from executing downloads in the 
 app.use(helmet.hsts({ maxAge: 90 * 24 * 60 * 60, force: true })); // asks browsers to access site via HTTPS only
 app.use(helmet.dnsPrefetchControl()); // disables DNS prefetching
 app.use(helmet.noCache()); // disable caching on client’s browser
-
-
-
+// Configuring a Content Security Policy, can prevent the injection of anything unintended into pages.
+// This will protect application from XSS vulnerabilities, undesired tracking, malicious frames, and much more.
+app.use(helmet.contentSecurityPolicy({ directives: { defaultSrc: ["'self'"], scriptSrc: ["'self'", 'trusted-cdn.com'] } }));
 
 
 
