@@ -7,10 +7,10 @@ app.use(helmet.frameguard({ action: 'deny' })); // denys adding the site in an i
 app.use(helmet.xssFilter()); // sanitize input sent to server
 app.use(helmet.noSniff()); // instructs the browser to not bypass the provided Content-Type
 app.use(helmet.ieNoOpen()); // prevent IE users from executing downloads in the trusted site's context.
-
-
-
-
+// HTTP Strict Transport Security (HSTS) is a web security policy which helps to protect websites against protocol downgrade attacks and cookie hijacking
+app.use(helmet.hsts({ maxAge: 90 * 24 * 60 * 60, force: true })); // asks browsers to access site via HTTPS only
+app.use(helmet.dnsPrefetchControl()); // disables DNS prefetching
+app.use(helmet.noCache()); // disable caching on client’s browser
 
 
 
